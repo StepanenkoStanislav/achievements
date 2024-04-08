@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  db:
+    container_name: db
+    image: postgres:16-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    env_file:
+      - ../backend/.env
+
+  web:
+    container_name: app
+    build: ../backend
+    command: uvicorn app.main:app --host 0.0.0.0 --proxy-headers
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../backend/.env
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:

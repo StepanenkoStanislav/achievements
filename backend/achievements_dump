@@ -1,0 +1,105 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 16.2
+-- Dumped by pg_dump version 16.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Data for Name: achievements; Type: TABLE DATA; Schema: public; Owner: achievements_admin
+--
+
+COPY public.achievements (name, description_ru, description_en, points, id) FROM stdin;
+Nostalgy	Скачать игру дества и перепройти её	Download the childhood game and replay it	10	1
+Jeweler	Открыл баночку йода, не обработав окружающие объекты	Opened a jar of iodine without treating surrounding objects	25	2
+Cat Ninja	Вылез из под одеяла, на котором лежит кот, не потревожив его	Crawled out from under the blanket on which the cat	40	3
+Archaeologist	Установить ICQ	Install ICQ	37	4
+Drozdov	Пересчитать всех жуков во дворе	Count all the bugs in the yard	30	5
+Veni Vidi Vici	Сдать экзамен без подготовки	Pass the exam without preparation	35	6
+Flat Earth Believer	Доказать, что Земля плоская	Prove that the Earth is flat	40	7
+\.
+
+
+--
+-- Data for Name: alembic_version; Type: TABLE DATA; Schema: public; Owner: achievements_admin
+--
+
+COPY public.alembic_version (version_num) FROM stdin;
+cabe4f0b55ec
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: achievements_admin
+--
+
+COPY public.users (username, language, id) FROM stdin;
+DenisEpic	ru	1
+IvanGuru	ru	2
+Tony_007	en	3
+AlexCaster	en	4
+MysticAndrew	ru	5
+\.
+
+
+--
+-- Data for Name: user_achievement_associations; Type: TABLE DATA; Schema: public; Owner: achievements_admin
+--
+
+COPY public.user_achievement_associations (user_id, achievement_id, "timestamp", id) FROM stdin;
+1	7	2024-03-11 00:00:00	1
+1	4	2024-03-12 00:00:00	2
+1	5	2024-03-13 00:00:00	3
+1	6	2024-03-14 00:00:00	4
+1	3	2024-03-15 00:00:00	5
+1	2	2024-03-16 00:00:00	6
+3	2	2024-03-13 00:00:00	7
+3	1	2024-03-12 00:00:00	8
+2	2	2024-03-13 00:00:00	9
+1	1	2024-03-17 00:00:00	10
+4	7	2024-03-13 00:00:00	11
+4	1	2024-03-14 00:00:00	12
+4	2	2024-03-15 00:00:00	13
+4	3	2024-03-16 00:00:00	14
+4	4	2024-03-17 00:00:00	15
+4	5	2024-03-18 00:00:00	16
+4	6	2024-03-19 00:00:00	17
+\.
+
+
+--
+-- Name: achievements_id_seq; Type: SEQUENCE SET; Schema: public; Owner: achievements_admin
+--
+
+SELECT pg_catalog.setval('public.achievements_id_seq', 7, true);
+
+
+--
+-- Name: user_achievement_associations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: achievements_admin
+--
+
+SELECT pg_catalog.setval('public.user_achievement_associations_id_seq', 17, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: achievements_admin
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 5, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
