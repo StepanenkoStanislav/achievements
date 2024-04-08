@@ -27,7 +27,25 @@
 
 Для запуска проекта необходим [Docker](https://www.docker.com/)
 
-В корневой директории проекта `/achievements` в терминале необходимо перейти в директорию `/infra` и
+Также в директории `/backend` необходимо создать файл `.env`, в котором должны 
+быть указаны:
+- POSTGRES_DB - Название БД
+- POSTGRES_USER - Пользователя для подключения к БД
+- POSTGRES_PASSWORD - Пароль пользователя
+- DB_HOST - Хост, на котором будет БД
+- DB_PORT - Порт БД
+
+Пример находится в файле `/backend/example.env`
+
+```dotenv
+POSTGRES_DB=achievements
+POSTGRES_USER=achievements_admin
+POSTGRES_PASSWORD=password
+DB_HOST=db
+DB_PORT=5432
+```
+
+После этого в корневой директории проекта `/achievements` в терминале необходимо перейти в директорию `/infra` и
  выполнить команду:
 ```commandline
 docker-compose up --build
@@ -40,31 +58,10 @@ docker exec app alembic upgrade head
 
 Импортировать данные можно из корневой директории командой:
 ```commandline
-docker exec -i db psql -d achievements -U achievements_admin < backend/achievements_dump
+docker exec -i db psql -d achievements -U achievements_admin < backend/achievements.back
 ```
 
 #### Проект будет доступен по адресу [http://127.0.0.1/](http://127.0.0.1/)
-
----
-
-Есть возможность переопределить некоторые настройки проекта:
-- Название БД
-- Пользователя для подключения к БД
-- Пароль пользователя
-- Хост, на котором будет БД
-- Порт БД
-
-Для этого в директории `/backend` необходимо создать файл `.env` и указать в нём 
-необходимые настройки:
-```dotenv
-POSTGRES_DB=achievements
-POSTGRES_USER=achievements_admin
-POSTGRES_PASSWORD=password
-DB_HOST=db
-DB_PORT=5432
-```
-
-Пример находится в файле `/backend/example.env`
 
 
 ## API Эндпоинты
