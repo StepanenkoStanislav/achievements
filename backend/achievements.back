@@ -30,16 +30,6 @@ Veni Vidi Vici	Сдать экзамен без подготовки	Pass the ex
 Flat Earth Believer	Доказать, что Земля плоская	Prove that the Earth is flat	40	7
 \.
 
-
---
--- Data for Name: alembic_version; Type: TABLE DATA; Schema: public; Owner: achievements_admin
---
-
-COPY public.alembic_version (version_num) FROM stdin;
-cabe4f0b55ec
-\.
-
-
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: achievements_admin
 --
