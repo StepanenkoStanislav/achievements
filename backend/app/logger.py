@@ -1,5 +1,6 @@
 import logging
 import sys
+from pathlib import Path
 
 from app.core.config import BASE_DIR
 
@@ -10,6 +11,7 @@ formatter = logging.Formatter(log_format)
 
 stream_handler = logging.StreamHandler(sys.stdout)
 path_to_log_file = BASE_DIR / "logs" / "logs.txt"
+Path.mkdir(path_to_log_file.parent, exist_ok=True)
 file_handler = logging.FileHandler(path_to_log_file)
 
 stream_handler.setFormatter(formatter)
